@@ -1,0 +1,23 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: DSSP-Python-Project
+  annotations:
+    github.com/project-slug: BackstageSSPPoC/DSSP-Python-Project
+    backstage.io/techdocs-ref: dir:.
+    backstage.io/kubernetes-id: DSSP-Python-Project
+    sonarqube.org/project-key: dssp-python-project
+    jenkins.io/job-full-name: Backstage_SSP_PoC/DSSP-Python-Project/main
+    argocd/app-name: dssp-python-project-dev
+    prometheus.io/rule: "kube_pod_status_phase{pod=~'dssp-python-project.*'}|phase,kube_pod_container_status_restarts_total{pod=~'dssp-python-project.*'}|container"
+    prometheus.io/alert: "KubePodCrashLooping,KubeDeploymentReplicasMismatch,KubePodNotReady,KubeContainerWaiting,KubeContainerOOMKilled,KubeDeploymentRolloutStuck"
+    prometheus.io/labels: "namespace=dev"
+    grafana/overview-dashboard: 'http://34.29.242.32/grafana/d/ffuuiuytw0f0gb/backstage-view?var-pod_prefix=dssp-python-project&var-namespace=dev&kiosk' 
+  tags:
+    - python
+    - scaffolded
+spec:
+  type: service
+  lifecycle: Dev
+  owner: user:default/chaitanya-shekhar-pandey
+  system: dssp-platform
