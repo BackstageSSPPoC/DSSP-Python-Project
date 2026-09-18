@@ -9,7 +9,7 @@ metadata:
     sonarqube.org/project-key: dssp-python-project
     jenkins.io/job-full-name: Backstage_SSP_PoC/DSSP-Python-Project/main
     argocd/app-name: dssp-python-project-dev
-    prometheus.io/rule: "kube_pod_status_phase{pod=~'.*dssp-python-project.*'}|phase,kube_pod_container_status_restarts_total{pod=~'.*dssp-python-project.*'}|container"
+    prometheus.io/rule: "kube_pod_container_resource_requests{pod%3D~'dssp-python-project.*'}|resource,kube_pod_container_status_restarts_total{pod%3D~'dssp-python-project.*'}|container"
     prometheus.io/alert: "KubePodCrashLooping,KubeDeploymentReplicasMismatch,KubePodNotReady,KubeContainerWaiting,KubeContainerOOMKilled,KubeDeploymentRolloutStuck"
     prometheus.io/labels: "namespace=dev"
     grafana/overview-dashboard: 'http://34.29.242.32/grafana/d/ffuuiuytw0f0gb/backstage-view?var-pod_prefix=dssp-python-project&var-namespace=dev&kiosk' 
